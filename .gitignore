@@ -36,3 +36,15 @@ build/
 # =====================
 Thumbs.db
 .DS_Store
+
+# =====================
+# PHP / LARAVEL / FILAMENT
+# =====================
+/web/vendor/
+/web/node_modules/
+/web/.env
+/web/storage/*.key
+/web/storage/logs/*
+/web/storage/framework/*
+/web/storage/app/public/*
+
