@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:KNDMovil.Converters"
+             x:Class="KNDMovil.Views.PropiedadDetallePage"
+             Title="Detalle de Propiedad"
+             BackgroundColor="Black">
+
+    <!-- Declarar el converter para la imagen estática de OSM -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:AddressToStaticMapConverter x:Key="AddressToStaticMapConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <!-- Carrusel de imágenes -->
+            <CarouselView ItemsSource="{Binding Propiedad.pro_imagenes}" HeightRequest="250">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" HeightRequest="250" Aspect="AspectFill"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <!-- Detalles de la propiedad -->
+            <Label Text="{Binding Propiedad.pro_tipo}" FontSize="Large" FontAttributes="Bold" Margin="0,10,0,0" TextColor="White"/>
+
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Provincia: " FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Propiedad.pro_provincia}" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ciudad: " FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Propiedad.pro_ciudad}" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Área de Terreno: " FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Propiedad.pro_area_terreno}" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Altura Total: " FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Propiedad.pro_alto_total}" TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Precio: " FontAttributes="Bold" TextColor="White"/>
+                <Label Text="{Binding Propiedad.pro_precio}" TextColor="White"/>
+            </StackLayout>
+
+            <Label Text="Descripción:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="White"/>
+            <Label Text="{Binding Propiedad.pro_descripcion}" LineBreakMode="WordWrap" TextColor="White"/>
+
+            <!-- Sección para la dirección -->
+            <Label Text="Dirección:" FontAttributes="Bold" Margin="0,10,0,0" TextColor="White"/>
+            <Label Text="{Binding Propiedad.pro_direccion}" TextColor="White"/>
+
+
+            <!-- Botón para abrir la app de mapas (se geocodifica la dirección en el code-behind) -->
+            <Button Text="Abrir en Mapas"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    Margin="0,10,0,0"
+                    Clicked="OnOpenMapsClicked" />
+
+            <!-- Botón para WhatsApp -->
+            <Button Text="Contactar por WhatsApp" 
+                    Command="{Binding WhatsAppCommand}" 
+                    TextColor="White" 
+                    BackgroundColor="#25D366" 
+                    Margin="0,10,0,0"/>
+
+            <!-- Botón para ver el plano (visible solo si existe plano) -->
+            <Button Text="Ver Plano" 
+                    Command="{Binding VerPlanoCommand}"
+                    IsVisible="{Binding Propiedad.HasPlano}" 
+                    TextColor="White" 
+                    BackgroundColor="Transparent" 
+                    Margin="0,10,0,0"/>
+
+            <!-- Botón para simular crédito -->
+            <Button Text="Simular Crédito"
+                    Clicked="OnSimularCreditoClicked"
+                    TextColor="White"
+                    BackgroundColor="Blue"
+                    Margin="0,10,0,0"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

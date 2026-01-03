@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KNDMovil.Views.PropiedadActualizar"
+             BackgroundColor="#f9f9f9"
+             Title="Actualizar Propiedad">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="HeaderLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="28" />
+                <Setter Property="TextColor" Value="#00274e" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0,0,0,15" />
+            </Style>
+            <Style x:Key="FormEntry" TargetType="Entry">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="#AAAAAA" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+            <Style x:Key="FormPicker" TargetType="Picker">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Margin" Value="0,5" />
+                <Setter Property="HeightRequest" Value="50" />
+            </Style>
+            <Style x:Key="FormEditor" TargetType="Editor">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="#AAAAAA" />
+                <Setter Property="AutoSize" Value="TextChanges" />
+                <Setter Property="Margin" Value="0,5" />
+            </Style>
+            <Style x:Key="SectionLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#00274e" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="5,10,0,5" />
+            </Style>
+            <Style x:Key="ActionButton" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="HeightRequest" Value="55" />
+                <Setter Property="Margin" Value="20,15,20,25" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <!-- Header con degradado -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Frame Grid.Row="0" Padding="0" HasShadow="True" Margin="0,0,0,15">
+                <Grid HeightRequest="120">
+                    <BoxView>
+                        <BoxView.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#00274e" Offset="0.0" />
+                                <GradientStop Color="#0066cc" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Text="Actualizar Propiedad" 
+                               TextColor="White" 
+                               FontSize="26" 
+                               FontAttributes="Bold" 
+                               HorizontalOptions="Center" />
+                        <Label Text="Modifica los detalles de la propiedad" 
+                               TextColor="#e0e0e0" 
+                               FontSize="16" 
+                               HorizontalOptions="Center" />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Padding="20,0,20,20" Spacing="8">
+                    <!-- Información Básica -->
+                    <Frame BorderColor="#DDDDDD" BackgroundColor="White" CornerRadius="10" Padding="15" Margin="0,5,0,15" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Información Básica" Style="{StaticResource SectionLabel}" TextColor="#0066cc" />
+                            <BoxView Color="#DDDDDD" HeightRequest="1" Margin="0,0,0,10" />
+
+                            <!-- Tipo -->
+                            <Label Text="Tipo de Propiedad" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Entry x:Name="TipoEntry" 
+                                       Placeholder="Casa, Departamento, Terreno, etc." 
+                                       Style="{StaticResource FormEntry}" />
+                            </Frame>
+
+                            <!-- Ubicación: Pickers para Provincia y Ciudad -->
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Provincia" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Picker x:Name="ProvinciaPicker" 
+                                                Title="Selecciona Provincia" 
+                                                Style="{StaticResource FormPicker}" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Ciudad" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Picker x:Name="CiudadPicker" 
+                                                Title="Selecciona Ciudad" 
+                                                Style="{StaticResource FormPicker}" 
+                                                IsEnabled="False" />
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+
+                            <!-- Dirección -->
+                            <Label Text="Dirección" FontSize="14" TextColor="#555555" Margin="5,10,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Entry x:Name="DireccionEntry" Placeholder="Calle, número, sector, etc." Style="{StaticResource FormEntry}" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Características -->
+                    <Frame BorderColor="#DDDDDD" BackgroundColor="White" CornerRadius="10" Padding="15" Margin="0,0,0,15" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Características" Style="{StaticResource SectionLabel}" TextColor="#0066cc" />
+                            <BoxView Color="#DDDDDD" HeightRequest="1" Margin="0,0,0,10" />
+
+                            <!-- Descripción -->
+                            <Label Text="Descripción de la Propiedad" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                            <Frame Padding="5" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Editor x:Name="DescripcionEditor" 
+                                        Placeholder="Describe la propiedad en detalle" 
+                                        Style="{StaticResource FormEditor}"
+                                        HeightRequest="100" />
+                            </Frame>
+
+                            <!-- Precio -->
+                            <Label Text="Precio ($)" FontSize="14" TextColor="#555555" Margin="5,10,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Entry x:Name="PrecioEntry" Placeholder="Precio en dólares" Style="{StaticResource FormEntry}" Keyboard="Numeric" />
+                            </Frame>
+
+                            <!-- Características principales -->
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Habitaciones" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Entry x:Name="HabitacionesEntry" Placeholder="0" Style="{StaticResource FormEntry}" Keyboard="Numeric" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Baños" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Entry x:Name="BaniosEntry" Placeholder="0" Style="{StaticResource FormEntry}" Keyboard="Numeric" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="2">
+                                    <Label Text="Estacionam." FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Entry x:Name="EstacionamientosEntry" Placeholder="0" Style="{StaticResource FormEntry}" Keyboard="Numeric" />
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+
+                            <!-- Medidas -->
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Área de Terreno" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Entry x:Name="AreaTerrenoEntry" Placeholder="m²" Style="{StaticResource FormEntry}" Keyboard="Numeric"/>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Alto Total" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Entry x:Name="AltoTotalEntry" Placeholder="metros" Style="{StaticResource FormEntry}" Keyboard="Numeric"/>
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+
+                            <!-- Estado y Disponibilidad -->
+                            <Grid Margin="0,10,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="Estado" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Picker x:Name="EstadoPicker"
+                                                Title="Selecciona Estado"
+                                                Style="{StaticResource FormPicker}" />
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Disponibilidad" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                                    <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                        <Picker x:Name="DisponibilidadPicker"
+                                                Title="Selecciona Disponibilidad"
+                                                Style="{StaticResource FormPicker}" />
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Propietario -->
+                    <Frame BorderColor="#DDDDDD" BackgroundColor="White" CornerRadius="10" Padding="15" Margin="0,0,0,15" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Información del Propietario" Style="{StaticResource SectionLabel}" TextColor="#0066cc" />
+                            <BoxView Color="#DDDDDD" HeightRequest="1" Margin="0,0,0,10" />
+                            <Label Text="Nombre del Propietario" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Entry x:Name="NombrePropietarioEntry" 
+                                       Placeholder="Nombre completo" 
+                                       Style="{StaticResource FormEntry}" />
+                            </Frame>
+                            <Label Text="Celular del Propietario" FontSize="14" TextColor="#555555" Margin="5,10,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <Entry x:Name="CelularPropietarioEntry" 
+                                       Placeholder="Número de contacto" 
+                                       Style="{StaticResource FormEntry}" 
+                                       Keyboard="Telephone" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Multimedia -->
+                    <Frame BorderColor="#DDDDDD" BackgroundColor="White" CornerRadius="10" Padding="15" Margin="0,0,0,15" HasShadow="True">
+                        <StackLayout>
+                            <Label Text="Imágenes y Planos" Style="{StaticResource SectionLabel}" TextColor="#0066cc" />
+                            <BoxView Color="#DDDDDD" HeightRequest="1" Margin="0,0,0,10" />
+
+                            <!-- Sección de Imagen -->
+                            <Label Text="Imagen" FontSize="14" TextColor="#555555" Margin="5,0,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <!-- Entry de solo lectura para mostrar la URL de la imagen -->
+                                <Entry x:Name="ImagenesEntry" 
+                   Placeholder="Selecciona una imagen" 
+                   Style="{StaticResource FormEntry}"
+                   IsReadOnly="True" />
+                            </Frame>
+                            <!-- Botón para seleccionar una imagen -->
+                            <Button Text="Seleccionar Imagen" 
+                Style="{StaticResource ActionButton}"
+                BackgroundColor="#00274e"
+                Clicked="OnSeleccionarImagenClicked" />
+
+                            <!-- Sección de Planos -->
+                            <Label Text="Planos (opcional)" FontSize="14" TextColor="#555555" Margin="5,10,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <!-- Entry de solo lectura para mostrar la URL del PDF -->
+                                <Entry x:Name="PlanosEntry" 
+                   Placeholder="Selecciona un PDF" 
+                   Style="{StaticResource FormEntry}"
+                   IsReadOnly="True" />
+                            </Frame>
+                            <!-- Botón para seleccionar PDF -->
+                            <Button Text="Seleccionar PDF" 
+                Style="{StaticResource ActionButton}"
+                BackgroundColor="#00274e"
+                Clicked="OnSeleccionarPlanosClicked" />
+
+                            <!-- Sección de Video -->
+                            <Label Text="Video (opcional)" FontSize="14" TextColor="#555555" Margin="5,10,0,0" />
+                            <Frame Padding="0" BorderColor="#DDDDDD" CornerRadius="8" HasShadow="False">
+                                <!-- Entry para ingresar la URL del video (sin botón para seleccionar) -->
+                                <Entry x:Name="VideoEntry" 
+                   Placeholder="Enlace del video" 
+                   Style="{StaticResource FormEntry}" />
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <!-- Botón de Acción -->
+                    <Button Text="ACTUALIZAR PROPIEDAD" 
+                            Style="{StaticResource ActionButton}"
+                            BackgroundColor="#00274e"
+                            Clicked="OnActualizarPropiedadClicked">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#00274e" Offset="0.0" />
+                                <GradientStop Color="#0066cc" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Indicador de carga premium -->
+            <Grid Grid.RowSpan="2" BackgroundColor="#80FFFFFF" x:Name="LoadingOverlay" IsVisible="False">
+                <Frame WidthRequest="120" HeightRequest="120" BackgroundColor="White" 
+                       CornerRadius="20" HasShadow="True" HorizontalOptions="Center" VerticalOptions="Center"
+                       BorderColor="#e0e0e0">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator x:Name="LoadingIndicator" IsRunning="False" IsVisible="False" 
+                                           Color="#00274e" HeightRequest="50" WidthRequest="50"/>
+                        <Label Text="Actualizando..." HorizontalOptions="Center" Margin="0,10,0,0" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

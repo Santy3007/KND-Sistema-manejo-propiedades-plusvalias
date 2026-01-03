@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KNDMovil.Views.MisPropiedadesPage"
+             BackgroundColor="#f9f9f9"
+             Title="Mis Propiedades">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="PropertyTypeLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="8,3" />
+                <Setter Property="BackgroundColor" Value="#4CAF50" />
+            </Style>
+            <Style x:Key="PriceLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="TextColor" Value="#00274e" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="AddressLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#555555" />
+                <Setter Property="LineBreakMode" Value="TailTruncation" />
+            </Style>
+            <Style x:Key="CityLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="#777777" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header premium con degradado -->
+            <Grid Grid.Row="0">
+                <BoxView>
+                    <BoxView.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#00274e" Offset="0.0" />
+                            <GradientStop Color="#0066cc" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+                <StackLayout Padding="20,30,20,30">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" 
+                               HeightRequest="60" WidthRequest="60" BackgroundColor="White" 
+                               Margin="0,0,15,0" />
+                        <StackLayout Grid.Column="1" VerticalOptions="Center">
+                            <Label x:Name="UserNameLabel" TextColor="White" FontSize="24" FontAttributes="Bold" />
+                            <Label x:Name="UserEmailLabel" TextColor="#e0e0e0" FontSize="16" />
+                            <Label x:Name="UserRoleLabel" TextColor="#e0e0e0" FontSize="14" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+
+            <!-- Lista de propiedades -->
+            <RefreshView Grid.Row="1" x:Name="RefreshView" IsRefreshing="False">
+                <CollectionView x:Name="PropiedadesCollectionView" 
+                                SelectionMode="Single" 
+                                SelectionChanged="OnPropiedadSelected">
+                    <CollectionView.EmptyView>
+                        <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="30">
+                            <StackLayout>
+                                <Image Source="https://cdn-icons-png.flaticon.com/512/6598/6598519.png" 
+                                       HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" />
+                                <Label Text="Sin propiedades" FontSize="22" FontAttributes="Bold" 
+                                       TextColor="#666666" HorizontalOptions="Center" Margin="0,20,0,5" />
+                                <Label Text="No tienes propiedades disponibles en este momento" 
+                                       FontSize="16" TextColor="#888888" HorizontalOptions="Center" />
+                                <Button Text="Actualizar" BackgroundColor="#00274e" TextColor="White" 
+                                        CornerRadius="25" Margin="50,20" HeightRequest="50" />
+                            </StackLayout>
+                        </Grid>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Margin="15,8" Padding="0" CornerRadius="15" HasShadow="True" BackgroundColor="White">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="160" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Imagen de la propiedad -->
+                                    <Grid Grid.Row="0">
+                                        <BoxView BackgroundColor="#e0e0e0" />
+                                        <Image Source="{Binding pro_imagenes[0]}" Aspect="AspectFill">
+                                            <Image.Triggers>
+                                                <DataTrigger TargetType="Image" Binding="{Binding pro_imagenes.Count}" Value="0">
+                                                    <Setter Property="Source" Value="placeholder_house.png" />
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                        <Frame VerticalOptions="Start" HorizontalOptions="Start" 
+                                               Padding="0" Margin="10" CornerRadius="5" HasShadow="False">
+                                            <Label Text="{Binding pro_tipo}" Style="{StaticResource PropertyTypeLabel}" />
+                                        </Frame>
+                                        <Frame VerticalOptions="End" HorizontalOptions="End" 
+                                               BackgroundColor="#80000000" Padding="10,5" 
+                                               Margin="10" CornerRadius="5" HasShadow="False">
+                                            <Label Text="{Binding pro_precio, StringFormat='${0:N2}'}" 
+                                                   TextColor="White" FontAttributes="Bold" FontSize="18" />
+                                        </Frame>
+                                    </Grid>
+
+                                    <!-- Detalles de la propiedad -->
+                                    <StackLayout Grid.Row="1" Padding="15">
+                                        <Label Text="{Binding pro_direccion}" Style="{StaticResource AddressLabel}" />
+                                        <Grid Margin="0,10,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" 
+                                                   Text="{Binding pro_ciudad, StringFormat='📍 {0}'}" 
+                                                   Style="{StaticResource CityLabel}" />
+                                            <StackLayout Grid.Column="1" Orientation="Horizontal" Spacing="15">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="🛏️" FontSize="16" />
+                                                    <Label Text="{Binding pro_habitaciones}" FontSize="14" VerticalOptions="Center" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="🚿" FontSize="16" />
+                                                    <Label Text="{Binding pro_baños}" FontSize="14" VerticalOptions="Center" />
+                                                </StackLayout>
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="🚗" FontSize="16" />
+                                                    <Label Text="{Binding pro_estacionamientos}" FontSize="14" VerticalOptions="Center" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                        <!-- Botones de Editar y Eliminar -->
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20" Margin="0,10,0,0">
+                                            <Button Text="Editar" BackgroundColor="#FFA500" TextColor="White" CornerRadius="5" Clicked="Editar_Clicked" />
+                                            <Button Text="Eliminar" BackgroundColor="#FF0000" TextColor="White" CornerRadius="5" Clicked="Eliminar_Clicked" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+            <!-- Botón flotante para añadir nueva propiedad -->
+            <Button Grid.Row="1"
+                    Text="+"
+                    FontSize="30"
+                    TextColor="White"
+                    BackgroundColor="#00274e"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    CornerRadius="30"
+                    HorizontalOptions="End"
+                    VerticalOptions="End"
+                    Margin="0,0,20,20"
+                    Clicked="Crear_Clicked" />
+
+            <!-- Indicador de carga premium -->
+            <Grid Grid.RowSpan="2" BackgroundColor="#80FFFFFF" x:Name="LoadingOverlay" IsVisible="False">
+                <Frame WidthRequest="120" HeightRequest="120" BackgroundColor="White" 
+                       CornerRadius="20" HasShadow="True" HorizontalOptions="Center" VerticalOptions="Center"
+                       BorderColor="#e0e0e0">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator x:Name="LoadingIndicator" IsRunning="False" IsVisible="False" 
+                                           Color="#00274e" HeightRequest="50" WidthRequest="50"/>
+                        <Label Text="Cargando..." HorizontalOptions="Center" Margin="0,10,0,0" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

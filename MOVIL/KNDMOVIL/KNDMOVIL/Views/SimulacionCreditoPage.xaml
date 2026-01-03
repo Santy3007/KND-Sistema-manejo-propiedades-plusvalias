@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KNDMovil.Views.SimulacionCreditoPage"
+             Title="Simulación de Crédito"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="Simulación de Crédito" 
+                   FontSize="Large" 
+                   HorizontalOptions="Center" 
+                   TextColor="Black" />
+
+            <!-- Picker para seleccionar la institución financiera -->
+            <Picker x:Name="InstitucionPicker" Title="Selecciona institución" TextColor="Black" />
+
+            <!-- Entrada para el plazo en años -->
+            <Entry x:Name="PlazoEntry" Placeholder="Plazo (años)" Keyboard="Numeric" TextColor="Black"/>
+
+            <!-- Picker para seleccionar la frecuencia de pago -->
+            <Picker x:Name="FrecuenciaPicker" Title="Frecuencia de pago" TextColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>mensual</x:String>
+                        <x:String>trimestral</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Picker para seleccionar el método de amortización -->
+            <Picker x:Name="MetodoPicker" Title="Método de amortización" TextColor="Black">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>frances</x:String>
+                        <x:String>aleman</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Botón para realizar la simulación -->
+            <Button Text="Simular" Clicked="OnSimularClicked" 
+                    BackgroundColor="Blue" TextColor="White" />
+
+            <!-- Indicador de carga -->
+            <ActivityIndicator x:Name="LoadingIndicator" IsVisible="False" />
+
+            <!-- Espacio para mostrar resultados -->
+            <ScrollView>
+                <StackLayout x:Name="ResultadoLayout" Spacing="5"/>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

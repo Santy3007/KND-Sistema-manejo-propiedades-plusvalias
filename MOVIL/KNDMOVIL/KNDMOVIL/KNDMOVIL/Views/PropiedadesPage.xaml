@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KNDMovil.Views.PropiedadesPage"
+             Title="Propiedades"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Picker para seleccionar el tipo de propiedad -->
+            <Picker x:Name="TipoPropiedadPicker" 
+                    Title="Seleccione Tipo"
+                    ItemsSource="{Binding TiposPropiedades}"
+                    SelectedIndexChanged="OnTipoPropiedadSelected">
+                <!-- Agregar una opción predeterminada en el Picker -->
+                <Picker.Items>
+                    <x:String>Ninguno</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <ListView x:Name="PropiedadesListView" 
+                      ItemsSource="{Binding Propiedades}"
+                      HasUnevenRows="True"
+                      BackgroundColor="Black">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Image Source="{Binding pro_imagenes[0]}" 
+                                       HeightRequest="200" 
+                                       WidthRequest="200"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding pro_tipo}" 
+                                           FontAttributes="Bold" 
+                                           TextColor="White"/>
+                                    <Label Text="{Binding pro_id}" 
+                                           FontAttributes="Bold" 
+                                           TextColor="White"/>
+                                    <Label Text="{Binding pro_provincia}"
+                                           TextColor="White"/>
+                                    <Label Text="{Binding pro_ciudad}"
+                                           TextColor="White"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

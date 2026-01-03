@@ -1,0 +1,38 @@
+# =====================
+# GENERAL
+# =====================
+.vs/
+.idea/
+*.log
+
+# =====================
+# VISUAL STUDIO / .NET
+# =====================
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.pdb
+
+# =====================
+# ANDROID / XAMARIN
+# =====================
+**/bin/
+**/obj/
+*.apk
+*.aab
+
+# =====================
+# FLUTTER (si aplica)
+# =====================
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+
+# =====================
+# SISTEMA
+# =====================
+Thumbs.db
+.DS_Store
