@@ -1,0 +1,236 @@
+/* Estilos generales para el cuerpo y HTML */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    overflow: hidden; /* Oculta la barra de desplazamiento en el body */
+}
+
+/* Sidebar (Menú lateral) */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #883030;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Permite el desplazamiento en la barra lateral */
+    scrollbar-width: none; /* Oculta la barra de desplazamiento en Firefox */
+    -ms-overflow-style: none;  /* Oculta la barra de desplazamiento en IE y Edge */
+    transition: width 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
+}
+
+.sidebar.collapsed {
+    width: 60px;
+    padding: 10px; /* Reducir padding en el sidebar colapsado */
+}
+
+/* Perfil */
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.profile h2, .profile p {
+    transition: opacity 0.3s ease;
+}
+
+/* Reducir el tamaño del perfil y ajustar márgenes en el sidebar colapsado */
+.sidebar.collapsed .profile {
+    margin-bottom: 10px; /* Ajusta el margen inferior */
+}
+
+.sidebar.collapsed .profile img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Ocultar el nombre y correo en el perfil al colapsar */
+.sidebar.collapsed .profile h2,
+.sidebar.collapsed .profile p {
+    opacity: 0;
+    display: none; /* Ocultar completamente para no ocupar espacio */
+}
+
+/* Menú de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav ul li {
+    margin-bottom: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+nav ul li a i {
+    margin-right: 10px;
+}
+
+nav ul li a span {
+    transition: opacity 0.3s ease;
+}
+
+/* Ocultar los textos de los elementos del menú en el sidebar colapsado */
+.sidebar.collapsed nav ul li a span {
+    opacity: 0;
+    display: none;
+}
+
+nav ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Botón de Cerrar Sesión */
+.logout {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.logout a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.logout a i {
+    margin-right: 8px;
+}
+
+.logout a:hover {
+    background-color: #34495e;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#toggleButton {
+    position: absolute;
+    top: 0px; /* Ajusta este valor para alinear verticalmente */
+    right: 0;
+    background-color: #883030; /* Color de fondo para que el botón sea visible */
+    color: white; /* Color de la flecha */
+    border: none;
+    cursor: pointer;
+    font-size: 25px; /* Tamaño más grande para la flecha */
+    padding: 5px 7px; /* Añade padding para hacer el botón más grande y visible */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    transition: transform 0.3s ease;
+    border-radius: 100px; /* Borde redondeado */
+}
+
+#toggleButton:hover {
+    background-color: #7a2929; /* Cambia ligeramente el color al pasar el mouse */
+}
+
+
+
+/* Contenido principal */
+.main-content {
+    margin-left: 250px; /* Asegura que el contenido no quede debajo del sidebar */
+    padding: 20px;
+    height: calc(100vh - 40px); /* Ajusta la altura disponible */
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido se apile verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 60px;
+}
+
+/* iframe para cargar las páginas */
+iframe {
+    width: 100%;
+    max-width: 1200px; /* Limita el ancho máximo del contenido */
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Diseño Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .main-content {
+        margin-left: 0;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .profile {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .profile img {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 0;
+        margin-right: 10px;
+    }
+
+    .profile h2 {
+        font-size: 18px;
+    }
+
+    .profile p {
+        font-size: 12px;
+    }
+}

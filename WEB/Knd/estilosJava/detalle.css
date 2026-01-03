@@ -1,0 +1,163 @@
+.contenedor-detalle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .botones-wrapper {
+        width: 100%;
+        max-width: none;
+        text-align: center;
+    }
+}
+
+.imagen-propiedad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.imagen-principal {
+    flex: 3; /* Ocupará 75% del espacio */
+}
+
+.imagen-principal img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.galeria-contenedor {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    gap: 10px;
+}
+.galeria-miniaturas {
+    flex: 1; /* Ocupará 25% del espacio */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.miniatura {
+    width: 100%; /* Las miniaturas se ajustan automáticamente */
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    object-fit: cover;
+    max-height: 120px; /* Máximo de altura para imágenes normales */
+}
+
+.miniatura:hover {
+    transform: scale(1.05);
+}
+
+
+/* Destacar la miniatura seleccionada */
+.miniatura-seleccionada {
+    border: 2px solid #1f2486;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Si la imagen es muy larga, permitimos que ocupe todo el ancho de la miniaturas */
+.miniatura-larga {
+    max-height: 100%; /* Ocupará todo el espacio disponible */
+    width: 100%;
+    object-fit: contain; /* Ajusta la imagen sin distorsionarla */
+}
+
+.info-contenedor {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 15px;
+}
+
+.info-propiedad {
+    width: 65%;
+}
+
+.botones-wrapper {
+    width: 260px;
+    height: 115px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.botones-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-ver-planos, .btn-contactar-whatsapp {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    text-align: center;
+    width: 100%;
+}
+
+.btn-ver-planos {
+    background: #e67e22;
+    color: white;
+}
+
+.btn-ver-planos:hover,
+.btn-ver-planos:focus,
+.btn-ver-planos:active {
+    background: #d35400; /* Cambia solo el fondo */
+    color: white !important; /* Mantiene el color del texto */
+}
+
+.btn-contactar-whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.btn-contactar-whatsapp:hover,
+.btn-contactar-whatsapp:focus,
+.btn-contactar-whatsapp:active {
+    background: #1ebc5a; /* Cambia solo el fondo */
+    color: white !important; /* Mantiene el color del texto */
+}
+
+
+
+.btn-volver {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1f2486;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-volver:hover {
+    background-color: #050590;
+    color: white !important; /* Evita que el texto cambie a rojo */
+}

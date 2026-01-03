@@ -1,0 +1,93 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo plomo claro */
+    color: #000; /* Texto negro */
+    line-height: 1.6;
+    text-align: center;
+}
+
+h1 {
+    color: #414141; /* Rojo medio apagado */
+    margin-top: 20px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Formulario */
+form {
+    background-color: white;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Contenedor para los botones */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre botones */
+    margin-top: 20px;
+}
+
+/* Botón Crear Rol */
+input[type="submit"] {
+    background-color: #388E3C; /* Verde */
+    color: white;
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #2e7d32;
+    transform: scale(1.05);
+}
+
+/* Enlace de Volver */
+a {
+    display: inline-block;
+    background-color: #757575; /* Plomo */
+    color: white;
+    padding: 12px 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a:hover {
+    background-color: #616161;
+    transform: scale(1.05);
+}

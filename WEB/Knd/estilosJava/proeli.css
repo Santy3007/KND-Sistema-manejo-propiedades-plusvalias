@@ -1,0 +1,206 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Fondo plomo claro */
+    color: #000; /* Texto negro */
+    line-height: 1.6;
+}
+
+/* Título principal */
+h1 {
+    text-align: center;
+    color: #000000; /* Rojo medio apagado */ 
+}
+
+/* Botón Crear Nuevo Perfil */
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: #757575; /* Color plomo */
+    padding: 12px 18px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    margin: 15px 0;
+     /* Alinear a la derecha */
+}
+
+a:hover {
+    background-color: #616161; /* Plomo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de escala */
+}
+
+/* Tabla */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+table th, table td {
+    text-align: left;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+}
+
+table th {
+    background-color: #b33a3a; /* Rojo medio apagado */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Gris claro */
+}
+
+table tr:hover {
+    background-color: #e0e0e0; /* Gris medio */
+}
+
+table td a {
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    transition: color 0.3s, transform 0.2s;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+table td a:hover {
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+table td a[href*="edit"] {
+    color: white;
+    background-color: #388E3C; /* Verde para editar/ver */
+}
+
+table td a[href*="edit"]:hover {
+    background-color: #2e7d32;
+}
+
+/* Estilo para el botón "Eliminar" */
+table td a[href*="delete"] {
+    color: white;
+    background-color: #b33a3a; /* Rojo medio apagado */
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: bold;
+}
+
+table td a[href*="delete"]:hover {
+    background-color: #992d2d; /* Rojo más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+}
+
+
+/* Botones del modal */
+button {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button.cancel {
+    background-color: #b33a3a; /* Rojo medio apagado */
+    color: white;
+}
+
+button.cancel:hover {
+    background-color: #992d2d;
+    transform: scale(1.05);
+}
+
+button.confirm {
+    background-color: #388E3C; /* Verde */
+    color: white;
+}
+
+button.confirm:hover {
+    background-color: #2e7d32;
+    transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro translúcido */
+    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #b33a3a; /* Rojo medio apagado */
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Botón de cierre del modal */
+.close {
+    color: #555; /* Gris oscuro */
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #b33a3a; /* Rojo medio apagado */
+}
+
+/* Animación del modal */
+.modal-content {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

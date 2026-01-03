@@ -1,0 +1,111 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Contenedor del formulario */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.7); /* Fondo translúcido */
+    backdrop-filter: blur(5px);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+/* Etiquetas */
+label {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Campos de entrada */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+}
+
+/* Contenedor de los botones */
+.botones-container {
+    display: flex;
+    gap: 10px; /* Espacio entre los botones */
+    justify-content: space-between;
+}
+
+/* Botón Guardar */
+button[type="submit"] {
+    background-color: #388E3C; /* Color personalizado */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 48%; /* Asegura que los botones estén al lado */
+}
+
+button[type="submit"]:hover {
+    background-color: #66BB6A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón Volver al Listado */
+a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #555; /* Color personalizado */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: 48%; /* Para alinearlo con el botón de guardar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+a:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    form {
+        padding: 20px;
+    }
+
+    button[type="submit"],
+    a {
+        font-size: 0.9em;
+        padding: 10px;
+        width: 100%; /* En pantallas más pequeñas, los botones se apilan */
+        margin-right: 0; /* Sin margen entre botones */
+    }
+
+    /* Ajustamos el orden de los botones en pantallas pequeñas */
+    button[type="submit"] {
+        margin-bottom: 10px;
+    }
+}

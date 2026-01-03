@@ -1,0 +1,127 @@
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f9fc;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+}
+
+/* Enlace para crear nueva provincia */
+a {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #555;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a:hover {
+    background-color: #444;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #b33a3a;
+    color: #fff;
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7f9fc;
+}
+
+tbody tr:hover {
+    background-color: #dfe6e9;
+}
+
+tbody td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Acciones */
+tbody td a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin-right: 5px;
+    text-align: center;
+}
+
+tbody td a[href*="edit"] {
+    background-color: #388E3C;
+}
+
+tbody td a[href*="edit"]:hover {
+    background-color: #66BB6A;
+}
+
+tbody td a[href*="delete"] {
+    background-color: #555;
+}
+
+tbody td a[href*="delete"]:hover {
+    background-color: #777;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    tbody td a {
+        padding: 6px 10px;
+    }
+}

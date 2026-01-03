@@ -1,0 +1,133 @@
+.propiedades-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.propiedad {
+    width: 300px; /* Tamaño uniforme para todas las tarjetas */
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.propiedad img {
+    width: 100%;
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Ajuste para mantener la relación de aspecto */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.propiedad:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.image-container {
+    width: 100%;
+    height: 200px; /* Ajusta según lo necesario */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+}
+
+
+.btn-detalles {
+    display: inline-block;
+    background: #e52f3c; /* Color rojo */
+    color: #fff; /* Texto blanco */
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-detalles:hover {
+    background: #1f386e; /* Cambio a azul al pasar el mouse */
+    color: #fff;
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+.btn-detalles:active {
+    transform: scale(0.95); /* Efecto de presión al hacer clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .propiedades-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    max-width: 900px;
+    margin: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-tabs {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.filter-tabs li {
+    flex: 1;
+    text-align: center;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+}
+
+.filter-tabs li.active {
+    color: #E57300;
+    border-bottom: 3px solid #E57300;
+}
+
+.filter-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-select, .filter-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.filter-button {
+    background: #E57300;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background: #D65E00;
+}
+
+ 
